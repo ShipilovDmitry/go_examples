@@ -1,10 +1,9 @@
 package greetings
 
+// #include "include/add.h"
+import "C"
 import "fmt"
-
-// Hello returns a greeting for the named person.
-func Hello(name string) string {
-    // Return a greeting that embeds the name in a message.
-    message := fmt.Sprintf("Hi, %v. Welcome!", name)
-    return message
+func Hello() {
+    result := C.add_nums(2,3)
+    fmt.Println(result)
 }
