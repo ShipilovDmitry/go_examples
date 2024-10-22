@@ -3,7 +3,7 @@ package greetings
 // TODO here will be Go-wrappers for C-code
 // WARNING the order of linking libraries metters! -lgo_bridge should be the first one!
 
-// #include "include/add.h"
+// #include "include/bridge.h"
 // #cgo LDFLAGS: -L${SRCDIR}/libs -lgo_bridge -ltrack-filter  -lstdc++
 import "C"
 
@@ -16,7 +16,3 @@ func PrintName() {
     C.printName()
 }
 
-func GetDistance() float64 {
-    result := C.getDistance()
-    return float64(result)
-}
