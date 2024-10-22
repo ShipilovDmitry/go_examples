@@ -2,6 +2,3 @@ services:
   dev:
     tty: true
     build: .
-    environment: 
-      APP_NAME: example-app
-      APP_EXEC: 1
