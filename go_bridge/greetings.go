@@ -1,5 +1,7 @@
 package greetings
 
+// TODO here will be Go-wrappers for C-code
+
 // #include "include/add.h"
 import "C"
 import "fmt"
