@@ -9,7 +9,6 @@ RUN cmake -Bbuild . && cmake --build build \
     && cp build/go_bridge/libgo_bridge.a /app/go_bridge/libs \
     && cp build/sources/libtrack-filter.a /app/go_bridge/libs
 
-RUN cd go_main && go build main.go \
-    && ./main
+RUN cd go_tests && go test 
 
 CMD [ "sh" ]

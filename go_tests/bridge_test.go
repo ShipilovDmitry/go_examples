@@ -1,7 +1,7 @@
 package main
 
 import (
-	"greetings/go_bridge"
+	"bridge/go_bridge"
 	"testing"
 )
 
@@ -9,14 +9,14 @@ import (
 
 
 func TestBridge(t *testing.T) {
-	add_nums_result := greetings.AddNums(2, 3)
+	add_nums_result := bridge.AddNums(2, 3)
 	if add_nums_result != 5 {
 		t.Errorf("Expected 5, got %d", add_nums_result)
 	}
-	get_distance_result := greetings.GetDistance()
+	get_distance_result := bridge.GetDistance()
 	if get_distance_result != 42 {
 		t.Errorf("Expected 42, got %f", get_distance_result)
 	}
 
-	greetings.PrintName()
+	bridge.PrintName()
 }

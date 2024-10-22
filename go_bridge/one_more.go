@@ -1,4 +1,4 @@
-package greetings
+package bridge
 
 //#include "include/bridge.h"
 import "C"

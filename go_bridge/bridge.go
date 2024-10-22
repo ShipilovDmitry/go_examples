@@ -1,4 +1,4 @@
-package greetings
+package bridge
 
 // TODO here will be Go-wrappers for C-code
 // WARNING the order of linking libraries metters! -lgo_bridge should be the first one!
