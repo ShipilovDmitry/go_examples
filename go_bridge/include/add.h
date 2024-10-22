@@ -5,13 +5,14 @@
 extern "C" {
 #endif
 
-int add_nums(int a, int b);
+int addNums(int a, int b);
+
+double getDistance();
+
+void printName();
 
 #ifdef __cplusplus
 }
 #endif
-
-
-
 
 #endif
