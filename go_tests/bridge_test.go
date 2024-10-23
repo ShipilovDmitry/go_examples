@@ -18,5 +18,10 @@ func TestBridge(t *testing.T) {
 		t.Errorf("Expected 42, got %f", get_distance_result)
 	}
 
+	info := bridge.GetTrackInfo()
+	if info != "TrackFilter" {
+		t.Errorf("Expected TrackFilter, got %s", info)
+	}
+
 	bridge.PrintName()
 }

@@ -13,3 +13,7 @@ void TrackFilter::printName() const
 {
     std::cout << "TrackFilter" << std::endl;
 }
+
+std::string TrackFilter::getName() const {
+    return m_name;
+}

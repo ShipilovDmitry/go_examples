@@ -10,9 +10,10 @@ class TrackFilter
 public:
     double getDistance() const;
     void printName() const;
+    std::string getName() const;
 
 private:
-    std::string name;
+    std::string m_name = "TrackFilter";
 };
 
 }

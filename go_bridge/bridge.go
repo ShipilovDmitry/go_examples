@@ -8,11 +8,18 @@ package bridge
 import "C"
 
 func AddNums(num1 int, num2 int) int {
-    result := C.addNums(C.int(num1), C.int(num2))
-    return int(result)
+	result := C.addNums(C.int(num1), C.int(num2))
+	return int(result)
 }
 
 func PrintName() {
-    C.printName()
+	C.printName()
 }
 
+func GetTrackInfo() string {
+	info := C.getInfo()
+	goString := C.GoString(info)
+	C.CStringRelease(info)
+
+	return goString
+}

@@ -11,6 +11,10 @@ double getDistance();
 
 void printName();
 
+char const * getInfo();
+
+void CStringRelease(const char * ptr);
+
 #ifdef __cplusplus
 }
 #endif
