@@ -6,7 +6,7 @@
 
 extern "C" {
 
-CString CStringCopy(CString value) NOEXCEPT {
+CStringCore CStringCopy(CStringCore value) NOEXCEPT {
     if (value == nullptr) {
         return nullptr;
     }
@@ -20,14 +20,14 @@ CString CStringCopy(CString value) NOEXCEPT {
     }
 }
 
-void CStringRelease(CString ptr) NOEXCEPT { std::unique_ptr<char const[]> const deleter(ptr); }
+void CStringRelease(CStringCore ptr) NOEXCEPT { std::unique_ptr<char const[]> const deleter(ptr); }
 
 STDStringRef * std_stringCreateEmpty() NOEXCEPT {
     auto string = std::make_unique<std::string>();
     return reinterpret_cast<STDStringRef *>(string.release());
 }
 
-STDStringRef * std_stringCreate(CString cString) NOEXCEPT {
+STDStringRef * std_stringCreate(CStringCore cString) NOEXCEPT {
     auto string = std::make_unique<std::string>(cString);
     return reinterpret_cast<STDStringRef *>(string.release());
 }
@@ -36,7 +36,7 @@ void std_stringDestroy(STDStringRef const * string) NOEXCEPT {
     std::unique_ptr<std::string const> const pString(reinterpret_cast<std::string const *>(string));
 }
 
-CString std_stringData(STDStringRef * string) NOEXCEPT {
+CStringCore std_stringData(STDStringRef * string) NOEXCEPT {
     return reinterpret_cast<std::string *>(string)->data();
 }
 

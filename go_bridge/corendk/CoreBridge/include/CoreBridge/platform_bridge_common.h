@@ -11,19 +11,19 @@ extern "C" {
 
 // string functions
 
-CString CStringCopy(CString value) NOEXCEPT;
+CStringCore CStringCopy(CStringCore value) NOEXCEPT;
 
-void CStringRelease(CString ptr) NOEXCEPT;
+void CStringRelease(CStringCore ptr) NOEXCEPT;
 
 typedef struct STDStringRef STDStringRef;
 
 STDStringRef * std_stringCreateEmpty() NOEXCEPT;
 
-STDStringRef * std_stringCreate(CString cString) NOEXCEPT;
+STDStringRef * std_stringCreate(CStringCore cString) NOEXCEPT;
 
 void std_stringDestroy(STDStringRef const * string) NOEXCEPT;
 
-CString std_stringData(STDStringRef * string) NOEXCEPT;
+CStringCore std_stringData(STDStringRef * string) NOEXCEPT;
 
 size_t std_stringSize(STDStringRef const * string) NOEXCEPT;
 #ifdef __cplusplus

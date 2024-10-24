@@ -32,10 +32,10 @@ extern "C" {
 #endif
 
 // Convenient types
-typedef char const * CString;
+typedef char const * CStringCore;
 
 typedef struct SizedString {
-    CString str;
+    CStringCore str;
     size_t size;
 } SizedString;
 

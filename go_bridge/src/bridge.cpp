@@ -2,9 +2,9 @@
 #include "track_filter.hpp"
 #include <memory>
 
-using CString = const char *;
+using CStringCore = const char *;
 
-CString CStringCopy(CString value)
+CStringCore CStringCopy(CStringCore value)
 {
     if (value == nullptr)
     {
