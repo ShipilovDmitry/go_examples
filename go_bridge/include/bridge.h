@@ -1,6 +1,8 @@
 #ifndef ADD_H
 #define ADD_H
 
+#include <CoreBridge/platform_bridge_interop.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -12,8 +14,6 @@ double getDistance();
 void printName();
 
 char const * getInfo();
-
-void CStringRelease(const char * ptr);
 
 #ifdef __cplusplus
 }
