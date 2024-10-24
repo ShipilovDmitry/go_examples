@@ -13,7 +13,7 @@ double getDistance();
 
 void printName();
 
-char const * getInfo();
+CStringCore getInfo();
 
 #ifdef __cplusplus
 }
