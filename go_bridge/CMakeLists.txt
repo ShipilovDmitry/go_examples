@@ -1,3 +1,5 @@
+# TODO
+# use corendk as submodule
 add_subdirectory(corendk)
 
 add_library(go_bridge STATIC src/bridge.cpp)
