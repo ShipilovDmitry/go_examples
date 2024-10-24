@@ -18,17 +18,17 @@ func PrintName() {
 	C.printName()
 }
 
-func CreateTrackFilter() uintptr {
+func CreateTrackFilter() unsafe.Pointer {
 	c_filter := C.createTrackFilter()
-	return uintptr(unsafe.Pointer(c_filter))
+	return unsafe.Pointer(c_filter)
 }
 
-func DestroyTrackFilter(filter uintptr) {
-	C.destroyTrackFilter((*C.TrackFilterRef)(unsafe.Pointer(filter)))
+func DestroyTrackFilter(filter unsafe.Pointer) {
+	C.destroyTrackFilter((*C.TrackFilterRef)(filter))
 }
 
-func GetTrackInfo(filter uintptr) string {
-	info := C.getInfo((*C.TrackFilterRef)(unsafe.Pointer(filter)))
+func GetTrackInfo(filter unsafe.Pointer) string {
+	info := C.getInfo((*C.TrackFilterRef)(filter))
 	goString := C.GoString(info)
 	C.CStringRelease(info)
 
