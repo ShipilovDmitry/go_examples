@@ -3,17 +3,24 @@
 
 #include <CoreBridge/platform_bridge_interop.h>
 
+// Pointers
+struct TrackFilterRef;
+typedef struct TrackFilterRef TrackFilterRef;
+
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-int addNums(int a, int b);
+    int addNums(int a, int b);
 
-double getDistance();
+    double getDistance();
 
-void printName();
+    void printName();
 
-CStringCore getInfo();
+    TrackFilterRef *createTrackFilter();
+    CStringCore getInfo(TrackFilterRef *filter);
+    void destroyTrackFilter(TrackFilterRef *filter);
 
 #ifdef __cplusplus
 }

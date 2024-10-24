@@ -7,7 +7,6 @@ import (
 
 // Here we need to put libs of library and bridge manually
 
-
 func TestBridge(t *testing.T) {
 	add_nums_result := bridge.AddNums(2, 3)
 	if add_nums_result != 5 {
@@ -18,7 +17,10 @@ func TestBridge(t *testing.T) {
 		t.Errorf("Expected 42, got %f", get_distance_result)
 	}
 
-	info := bridge.GetTrackInfo()
+	filter := bridge.CreateTrackFilter()
+	defer bridge.DestroyTrackFilter(filter)
+
+	info := bridge.GetTrackInfo(filter)
 	if info != "TrackFilter" {
 		t.Errorf("Expected TrackFilter, got %s", info)
 	}

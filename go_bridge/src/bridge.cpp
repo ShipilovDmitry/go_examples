@@ -23,11 +23,22 @@ extern "C"
         filter.printName();
     }
 
-    char const *getInfo()
+    CStringCore getInfo(TrackFilterRef *filter)
     {
-        filter::TrackFilter filter;
-        auto name = filter.getName();
+        auto &trackFilter = *reinterpret_cast<filter::TrackFilter *>(filter);
+        auto name = trackFilter.getName();
         auto copy = CStringCopy(name.c_str());
         return copy;
+    }
+
+    TrackFilterRef *createTrackFilter()
+    {
+        auto filter = std::make_unique<filter::TrackFilter>();
+        return reinterpret_cast<TrackFilterRef *>(filter.release());
+    }
+
+    void destroyTrackFilter(TrackFilterRef *filter)
+    {
+        delete reinterpret_cast<filter::TrackFilter *>(filter);
     }
 }

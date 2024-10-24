@@ -4,6 +4,11 @@
 
 using namespace filter;
 
+TrackFilter::TrackFilter()
+{
+    std::cout << "TrackFilter::Ctor" << std::endl;
+}
+
 double TrackFilter::getDistance() const
 {
     return 42;
@@ -11,9 +16,15 @@ double TrackFilter::getDistance() const
 
 void TrackFilter::printName() const
 {
-    std::cout << "TrackFilter" << std::endl;
+    std::cout << "TrackFilter: printName" << std::endl;
 }
 
-std::string TrackFilter::getName() const {
+std::string TrackFilter::getName() const
+{
     return m_name;
+}
+
+TrackFilter::~TrackFilter()
+{
+    std::cout << "TrackFilter destructor" << std::endl;
 }

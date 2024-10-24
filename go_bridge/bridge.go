@@ -7,6 +7,7 @@ package bridge
 // #cgo LDFLAGS: -L${SRCDIR}/libs -lgo_bridge -ltrack-filter  -lstdc++
 // #include "include/bridge.h"
 import "C"
+import "unsafe"
 
 func AddNums(num1 int, num2 int) int {
 	result := C.addNums(C.int(num1), C.int(num2))
@@ -17,8 +18,17 @@ func PrintName() {
 	C.printName()
 }
 
-func GetTrackInfo() string {
-	info := C.getInfo()
+func CreateTrackFilter() uintptr {
+	c_filter := C.createTrackFilter()
+	return uintptr(unsafe.Pointer(c_filter))
+}
+
+func DestroyTrackFilter(filter uintptr) {
+	C.destroyTrackFilter((*C.TrackFilterRef)(unsafe.Pointer(filter)))
+}
+
+func GetTrackInfo(filter uintptr) string {
+	info := C.getInfo((*C.TrackFilterRef)(unsafe.Pointer(filter)))
 	goString := C.GoString(info)
 	C.CStringRelease(info)
 
