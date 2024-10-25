@@ -44,9 +44,8 @@ extern "C"
 
     STDVectorInterop getRefsKinds()
     {
-        filter::TrackFilter filter;
-        auto kinds = filter.getRefsKinds();
-        return corendk::createVectorFromStdVector(std::move(kinds));
+        std::vector<C_RefsKinds> refsKinds = {{1, 2}, {3, 4}, {5, 6}};
+        return corendk::createVectorFromStdVector(std::move(refsKinds));
     }
 
     uint8_t * vector_data(STDVectorInterop vector) {
@@ -59,5 +58,11 @@ extern "C"
 
     void vector_destructor(STDVectorInterop vector) {
         vector.destructor(vector.vector);
+    }
+
+    STDVectorInterop getIntsArray() {
+        filter::TrackFilter filter;
+        auto kinds = filter.getRefsKinds();
+        return corendk::createVectorFromStdVector(std::move(kinds));
     }
 }

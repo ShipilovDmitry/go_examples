@@ -1,7 +1,7 @@
 package main
 
 import (
-	bridge "bridge/go_bridge"
+	"bridge/go_bridge"
 	"testing"
 )
 
@@ -28,7 +28,7 @@ func TestBridge(t *testing.T) {
 	bridge.PrintName()
 }
 
-func TestIntsArrya(t *testing.T) {
+func TestIntsArray(t *testing.T) {
 	// TODO test creating slice
 	expected := []int{1, 2, 3, 4}
 	s := bridge.GetIntsSlice()
@@ -37,5 +37,18 @@ func TestIntsArrya(t *testing.T) {
 			t.Errorf("Expected %d, got %d", expected[i], s[i])
 		}
 	}
+}
 
+func TestRefsKinds(t *testing.T) {
+	refsKindsSlice := []bridge.RefsKinds{
+		{Refs: 1, Kinds: 2},
+		{Refs: 3, Kinds: 4},
+		{Refs: 5, Kinds: 6},
+	}
+	r := bridge.GetRefsKinds()
+	for i := 0; i < len(r); i++ {
+		if r[i] != refsKindsSlice[i] {
+			t.Errorf("Expected %d, got %d", refsKindsSlice[i], r[i])
+		}
+	}
 }

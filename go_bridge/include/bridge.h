@@ -13,6 +13,11 @@ extern "C"
 {
 #endif
 
+    struct C_RefsKinds {
+        int refs;
+        int kinds;
+    };
+
     int addNums(int a, int b);
 
     double getDistance();
@@ -23,6 +28,8 @@ extern "C"
     CStringCore getInfo(TrackFilterRef *filter);
     void destroyTrackFilter(TrackFilterRef *filter);
 
+
+    STDVectorInterop getIntsArray();
     STDVectorInterop getRefsKinds();
 
     uint8_t * vector_data(STDVectorInterop vector);
