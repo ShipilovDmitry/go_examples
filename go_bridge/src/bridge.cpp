@@ -41,4 +41,23 @@ extern "C"
     {
         delete reinterpret_cast<filter::TrackFilter *>(filter);
     }
+
+    STDVectorInterop getRefsKinds()
+    {
+        filter::TrackFilter filter;
+        auto kinds = filter.getRefsKinds();
+        return corendk::createVectorFromStdVector(std::move(kinds));
+    }
+
+    uint8_t * vector_data(STDVectorInterop vector) {
+        return vector.dataGetter(vector.vector);
+    }
+
+    size_t vector_size(STDVectorInterop vector) {
+        return vector.sizeInBytesGetter(vector.vector);
+    }
+
+    void vector_destructor(STDVectorInterop vector) {
+        vector.destructor(vector.vector);
+    }
 }

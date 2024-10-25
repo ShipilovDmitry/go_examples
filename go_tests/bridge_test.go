@@ -27,3 +27,9 @@ func TestBridge(t *testing.T) {
 
 	bridge.PrintName()
 }
+
+func TestTypes(t *testing.T) {
+	// TODO test creating slice
+	bridge.GetRefsKinds()
+
+}

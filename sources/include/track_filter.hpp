@@ -15,6 +15,8 @@ namespace filter
         void printName() const;
         std::string getName() const;
 
+        std::vector<int> getRefsKinds() const;
+
     private:
         std::string m_name = "TrackFilter";
     };

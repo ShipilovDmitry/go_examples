@@ -28,3 +28,8 @@ TrackFilter::~TrackFilter()
 {
     std::cout << "TrackFilter destructor" << std::endl;
 }
+
+std::vector<int> TrackFilter::getRefsKinds() const
+{
+    return {1, 2, 3, 4};
+}
