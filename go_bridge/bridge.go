@@ -9,8 +9,8 @@ package bridge
 import "C"
 import "unsafe"
 
-type RefsKinds struct  {
-	refs int
+type RefsKinds struct {
+	refs  int
 	kinds int
 }
 
@@ -40,20 +40,20 @@ func GetTrackInfo(filter unsafe.Pointer) string {
 	return goString
 }
 
-func GetRefsKinds() []int{
+func GetIntsSlice() []int {
 	c_refs_kinds_vector_interop := C.getRefsKinds()
 
 	vector_data := C.vector_data(c_refs_kinds_vector_interop)
 	size := C.vector_size(c_refs_kinds_vector_interop)
 
 	elements_amount := int(size) / C.sizeof_int
-    // Read the data from memory
-    data := make([]int, elements_amount)
-    for i := 0; i < elements_amount; i++ {
-        data[i] = int(*(*C.int)(unsafe.Pointer(uintptr(unsafe.Pointer(vector_data)) + uintptr(i)*C.sizeof_int)))
-    }
+	// Read the data from memory
+	data := make([]int, elements_amount)
+	for i := 0; i < elements_amount; i++ {
+		data[i] = int(*(*C.int)(unsafe.Pointer(uintptr(unsafe.Pointer(vector_data)) + uintptr(i)*C.sizeof_int)))
+	}
 
 	C.vector_destructor(c_refs_kinds_vector_interop)
-	
-	return nil 
+
+	return data
 }
