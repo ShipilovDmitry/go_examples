@@ -2,8 +2,6 @@
 #include "track_filter.hpp"
 #include <memory>
 
-using CStringCore = const char *;
-
 extern "C"
 {
     int addNums(int a, int b)

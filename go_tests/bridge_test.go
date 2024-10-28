@@ -40,15 +40,15 @@ func TestIntsArray(t *testing.T) {
 }
 
 func TestRefsKinds(t *testing.T) {
-	refsKindsSlice := []bridge.RefsKinds{
+	refsKindsExpected := []bridge.RefsKinds{
 		{Refs: 1, Kinds: 2},
 		{Refs: 3, Kinds: 4},
 		{Refs: 5, Kinds: 6},
 	}
 	r := bridge.GetRefsKinds()
 	for i := 0; i < len(r); i++ {
-		if r[i] != refsKindsSlice[i] {
-			t.Errorf("Expected %d, got %d", refsKindsSlice[i], r[i])
+		if r[i] != refsKindsExpected[i] {
+			t.Errorf("Expected %d, got %d", refsKindsExpected[i], r[i])
 		}
 	}
 }
