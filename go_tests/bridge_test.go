@@ -52,3 +52,10 @@ func TestRefsKinds(t *testing.T) {
 		}
 	}
 }
+
+func TestCompareStrings(t *testing.T) {
+	r := bridge.CompareStrings("Hello, world!")
+	if r == false {
+		t.Errorf("Expected true, got false")
+	}
+}

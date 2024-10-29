@@ -83,3 +83,13 @@ func GetRefsKinds() []RefsKinds {
 
 	return data
 }
+
+func CompareStrings(expected string) bool {
+	cString := C.CString(expected)
+	stdStringRef := C.std_stringCreate(cString) // memory allocation in C
+	defer C.free(unsafe.Pointer(cString))
+	data := C.std_stringData(stdStringRef)
+	defer C.std_stringDestroy(stdStringRef) // memory deallocation in C
+	goString := C.GoString(data)
+	return expected == goString
+}
