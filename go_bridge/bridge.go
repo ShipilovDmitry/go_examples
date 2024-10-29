@@ -22,8 +22,8 @@ func AddNums(num1 int, num2 int) int {
 	return int(result)
 }
 
-func PrintName() {
-	C.printName()
+func GoCallbackFromC() {
+	C.go_callback_from_c()
 }
 
 func CreateTrackFilter() unsafe.Pointer {
@@ -114,4 +114,9 @@ func PrintRefsKinds(refsKinds []RefsKinds) {
 		}
 	}
 	C.refs_kinds_array((*C.uchar)(unsafe.Pointer(cArray)), C.size_t(len(refsKinds)))
+}
+
+//export go_callback
+func go_callback() {
+	fmt.Println("Go callback called")
 }

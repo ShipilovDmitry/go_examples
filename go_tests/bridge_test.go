@@ -24,8 +24,6 @@ func TestBridge(t *testing.T) {
 	if info != "TrackFilter" {
 		t.Errorf("Expected TrackFilter, got %s", info)
 	}
-
-	bridge.PrintName()
 }
 
 func TestIntsArray(t *testing.T) {
@@ -72,4 +70,8 @@ func TestPrintRefsKinds(t *testing.T) {
 		{Refs: 5, Kinds: 6},
 	}
 	bridge.PrintRefsKinds(refsKinds)
+}
+
+func TestGoCallback(t *testing.T) {
+	bridge.GoCallbackFromC()
 }

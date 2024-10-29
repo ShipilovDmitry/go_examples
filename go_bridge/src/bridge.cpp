@@ -16,10 +16,9 @@ extern "C"
         return filter.getDistance();
     }
 
-    void printName()
+    void go_callback_from_c()
     {
-        filter::TrackFilter filter;
-        filter.printName();
+        go_callback();
     }
 
     CStringCore getInfo(TrackFilterRef *filter)

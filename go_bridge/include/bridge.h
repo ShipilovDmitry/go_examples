@@ -22,7 +22,8 @@ extern "C"
 
     double getDistance();
 
-    void printName();
+    extern void go_callback();
+    void go_callback_from_c();
 
     TrackFilterRef *createTrackFilter();
     CStringCore getInfo(TrackFilterRef *filter);
