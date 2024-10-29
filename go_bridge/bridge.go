@@ -93,3 +93,25 @@ func CompareStrings(expected string) bool {
 	goString := C.GoString(data)
 	return expected == goString
 }
+
+func PrintIntArray(expected []int) {
+	cArray := (*C.int)(C.malloc(C.size_t(len(expected)) * C.sizeof_int))
+	defer C.free(unsafe.Pointer(cArray))
+	for i, v := range expected {
+		*(*C.int)(unsafe.Pointer(uintptr(unsafe.Pointer(cArray)) + uintptr(i)*C.sizeof_int)) = C.int(v)
+	}
+	C.ints_array((*C.uchar)(unsafe.Pointer(cArray)), C.size_t(len(expected)))
+}
+
+func PrintRefsKinds(refsKinds []RefsKinds) {
+	arrayLength := unsafe.Sizeof(C.struct_C_RefsKinds{}) * uintptr(len(refsKinds))
+	cArray := (*C.struct_C_RefsKinds)(C.malloc(C.size_t(arrayLength)))
+	defer C.free(unsafe.Pointer(cArray))
+	for i, v := range refsKinds {
+		*(*C.struct_C_RefsKinds)(unsafe.Pointer(uintptr(unsafe.Pointer(cArray)) + uintptr(i)*unsafe.Sizeof(C.struct_C_RefsKinds{}))) = C.struct_C_RefsKinds{
+			refs:  C.int(v.Refs),
+			kinds: C.int(v.Kinds),
+		}
+	}
+	C.refs_kinds_array((*C.uchar)(unsafe.Pointer(cArray)), C.size_t(len(refsKinds)))
+}

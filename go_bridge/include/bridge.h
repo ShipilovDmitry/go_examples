@@ -36,6 +36,8 @@ extern "C"
     size_t vector_size(STDVectorInterop vector);
     void vector_destructor(STDVectorInterop vector);
 
+    void ints_array(uint8_t *data, size_t size);
+    void refs_kinds_array(uint8_t * data, size_t size);
 
 #ifdef __cplusplus
 }

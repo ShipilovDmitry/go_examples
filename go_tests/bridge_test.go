@@ -59,3 +59,17 @@ func TestCompareStrings(t *testing.T) {
 		t.Errorf("Expected true, got false")
 	}
 }
+
+func TestPrintIntArray(*testing.T) {
+	ints := []int{1, 2, 3, 4}
+	bridge.PrintIntArray(ints)
+}
+
+func TestPrintRefsKinds(t *testing.T) {
+	refsKinds := []bridge.RefsKinds{
+		{Refs: 1, Kinds: 2},
+		{Refs: 3, Kinds: 4},
+		{Refs: 5, Kinds: 6},
+	}
+	bridge.PrintRefsKinds(refsKinds)
+}
