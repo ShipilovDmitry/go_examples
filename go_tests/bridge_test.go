@@ -73,5 +73,5 @@ func TestPrintRefsKinds(t *testing.T) {
 }
 
 func TestGoCallback(t *testing.T) {
-	bridge.GoCallbackFromC()
+	bridge.GoFunctionInC()
 }

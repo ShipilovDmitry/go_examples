@@ -6,6 +6,7 @@ package bridge
 // #cgo CFLAGS: -I${SRCDIR}/corendk/CoreBridge/include
 // #cgo LDFLAGS: -L${SRCDIR}/libs -lgo_bridge -ltrack-filter -lstdc++
 // #include "include/bridge.h"
+// #include "include/callbacks.h"
 import "C"
 import (
 	"fmt"
@@ -20,10 +21,6 @@ type RefsKinds struct {
 func AddNums(num1 int, num2 int) int {
 	result := C.addNums(C.int(num1), C.int(num2))
 	return int(result)
-}
-
-func GoCallbackFromC() {
-	C.go_callback_from_c()
 }
 
 func CreateTrackFilter() unsafe.Pointer {
@@ -116,7 +113,16 @@ func PrintRefsKinds(refsKinds []RefsKinds) {
 	C.refs_kinds_array((*C.uchar)(unsafe.Pointer(cArray)), C.size_t(len(refsKinds)))
 }
 
-//export go_callback
-func go_callback() {
+//export go_callback_1
+func go_callback_1() {
 	fmt.Println("Go callback called")
+}
+
+//export go_callback_2
+func go_callback_2() {
+	fmt.Println("Go callback 2")
+}
+
+func GoFunctionInC() {
+	C.get_go_callback((*[0]byte)(C.go_callback_2))
 }

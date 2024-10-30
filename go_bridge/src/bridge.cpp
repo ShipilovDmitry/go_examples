@@ -16,11 +16,6 @@ extern "C"
         return filter.getDistance();
     }
 
-    void go_callback_from_c()
-    {
-        go_callback();
-    }
-
     CStringCore getInfo(TrackFilterRef *filter)
     {
         auto &trackFilter = *reinterpret_cast<filter::TrackFilter *>(filter);
@@ -99,5 +94,9 @@ extern "C"
         {
             std::cout << i.refs << " " << i.kinds << std::endl;
         }
+    }
+
+    void get_go_callback(void (*callback)()) {
+        callback();
     }
 }
